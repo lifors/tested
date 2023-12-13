@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <div class="action-items">
+    <input type="text" [(ngModel)]="inputUsername" [disabled]="isSubmitting || retryTime > 0" style="margin-right: 10px;">
+    <button (click)="onSubmit()" [disabled]="isSubmitting || retryTime > 0">Тык</button>
+  </div>
+  <div class="answer-action-items">
+    <div *ngIf="success; else error">
+      <p>Добро пожаловать, {{ displayUsername }}!</p>
+    </div>
+    <ng-template #error>
+      <p>{{ errorMessage }}</p>
+    </ng-template>
+    <p *ngIf="retryTime > 0">Повторная попытка через {{ retryTime }} секунд</p>
+  </div>
+</div>
